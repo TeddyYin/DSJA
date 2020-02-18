@@ -16,6 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+var SSID;
+var level;
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -31,9 +35,9 @@ var app = {
     },
 
     scan: async function() {
-        var list = await WifiWizard2.scan();
-        for (let i = 0; i < list.length; i++) {
-            const element = list[i];
+        SSID = await WifiWizard2.scan();
+        for (let i = 0; i < SSID.length; i++) {
+            const element = SSID[i];
             alert(element.SSID);
         }
     },
@@ -51,11 +55,34 @@ var app = {
 
         var btnScanWifi = document.getElementById('btnScanWifi');
         btnScanWifi.addEventListener('click', this.getAvaliableWifi);
+		
+		var btnConnectWifi = document.getElementById('btnConnectWifi');
+        btnConnectWifi.addEventListener('click', this.ConnectWifi);
     },
 
     getAvaliableWifi: async function() {
-        var list = await WifiWizard2.scan();
-        alert(list.map(x => x.SSID).join());
+        SSID = await WifiWizard2.scan();	
+        alert(SSID.map(x => x.SSID).join());
+    },
+	
+	ConnectWifi: async function() {
+        // alert(SSID.map(x => x.SSID).join());
+		
+		// var ssid = $("#ssid").value;
+		// var pwd = $("#password").value;
+		// var algorithm = $("#algorithm").value;
+		
+		// alert(ssid + " " + pwd + " " + algorithm);
+		
+		// WifiWizard2.connect(ssid, bindAll, password, algorithm, isHiddenSSID)
+		// alert(WifiWizard2.connect(ssid, true, pwd, algorithm, true));
+		
+		alert(WifiWizard2.connect('yin 5G', true, 'momo6699', 'WPA', true));
+		
+		// WifiWizard2.formatWifiConfig(ssid, password, algorithm, isHiddenSSID)
+		// WifiWizard2.formatWifiConfig('yin 5G', 'momo6699', 'WPA', true);
+		
+		// WifiWizard2.add('yin 5G');
     }
 };
 
