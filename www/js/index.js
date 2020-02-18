@@ -65,24 +65,17 @@ var app = {
         alert(SSID.map(x => x.SSID).join());
     },
 	
-	ConnectWifi: async function() {
-        // alert(SSID.map(x => x.SSID).join());
-		
-		// var ssid = $("#ssid").value;
-		// var pwd = $("#password").value;
-		// var algorithm = $("#algorithm").value;
-		
-		// alert(ssid + " " + pwd + " " + algorithm);
-		
+	ConnectWifi: async function() {	
+		var ssid = document.getElementById('ssid').value;
+		var pwd = document.getElementById('password').value;
+		var algorithm = document.getElementById('algorithm').value;
+
 		// WifiWizard2.connect(ssid, bindAll, password, algorithm, isHiddenSSID)
-		// alert(WifiWizard2.connect(ssid, true, pwd, algorithm, true));
-		
-		alert(WifiWizard2.connect('yin 5G', true, 'momo6699', 'WPA', true));
+		alert(WifiWizard2.connect(ssid, true, pwd, algorithm, true));
+		// alert(WifiWizard2.connect('yin 5G', true, 'momo6699', 'WPA', true));
 		
 		// WifiWizard2.formatWifiConfig(ssid, password, algorithm, isHiddenSSID)
 		// WifiWizard2.formatWifiConfig('yin 5G', 'momo6699', 'WPA', true);
-		
-		// WifiWizard2.add('yin 5G');
     }
 };
 
