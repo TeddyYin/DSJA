@@ -20,6 +20,9 @@
 var SSID;
 var level;
 
+var WifiRouterIP = "";
+var WifiIPInfo= "";
+
 var app = {
     // Application Constructor
     initialize: function() {
@@ -32,6 +35,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+		this.setIPValueEvent();
     },
 
     scan: async function() {
@@ -58,7 +62,19 @@ var app = {
 		
 		var btnConnectWifi = document.getElementById('btnConnectWifi');
         btnConnectWifi.addEventListener('click', this.ConnectWifi);
+
+		var btnShowIP = document.getElementById('btnShowIP');
+        btnShowIP.addEventListener('click', this.setIPValueEvent);
     },
+
+	setIPValueEvent: async function() {
+		//
+		WifiIPInfo = await WifiWizard2.getWifiIPInfo();
+		// have value but not use
+		WifiRouterIP = await WifiWizard2.getWifiRouterIP();
+
+		document.getElementById('IP').value = WifiIPInfo["ip"];
+	},
 
     getAvaliableWifi: async function() {
         SSID = await WifiWizard2.scan();
