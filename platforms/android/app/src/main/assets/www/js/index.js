@@ -18,6 +18,7 @@
  */
 
 var SSID;
+var testSSID = "";
 var level;
 
 var WifiRouterIP = "";
@@ -65,7 +66,19 @@ var app = {
 
 		var btnShowIP = document.getElementById('btnShowIP');
         btnShowIP.addEventListener('click', this.setIPValueEvent);
+		
+		var btnTestSSID = document.getElementById('btnTestSSID');
+        btnTestSSID.addEventListener('click', this.showSSID);
     },
+	
+	showSSID: async function() {
+		for (let i = 0; i < SSID.length; i++) {
+            
+			testSSID += SSID[i].SSID + " ";
+        }
+		
+		alert(testSSID);
+	},
 
 	setIPValueEvent: async function() {
 		//
