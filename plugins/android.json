@@ -12,6 +12,9 @@
     },
     "wifiwizard2": {
       "PACKAGE_NAME": "com.example.cordovaTest"
+    },
+    "cordova-plugin-ping": {
+      "PACKAGE_NAME": "com.example.cordovaTest"
     }
   },
   "dependent_plugins": {

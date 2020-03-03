@@ -18,10 +18,15 @@
  */
 
 var SSID;
+var testSSID = "";
+var testTYPE = "";
 var level;
+var targetIP = "";
 
 var WifiRouterIP = "";
 var WifiIPInfo= "";
+
+var pingIP = "";
 
 var app = {
     // Application Constructor
@@ -65,13 +70,89 @@ var app = {
 
 		var btnShowIP = document.getElementById('btnShowIP');
         btnShowIP.addEventListener('click', this.setIPValueEvent);
+		
+		var btnTestSSID = document.getElementById('btnTestSSID');
+        btnTestSSID.addEventListener('click', this.showSSID);
+		
+		var btnTestTYPE = document.getElementById('btnTestTYPE');
+        btnTestTYPE.addEventListener('click', this.showTYPE);
+		
+		var btnTestAJAX = document.getElementById('btnTestAJAX');
+        btnTestAJAX.addEventListener('click', this.TestAJAX);
     },
+	
+	TestAJAX: async function() {
+		// alert("TestAJAX");
+		// $.ajax({
+			// url: "192.168.50.1",
+			// success: function(result){
+				// alert("success");
+			// },
+			// fail: function(result){
+				// alert("fail");
+			// }
+		// });
+		var p, success, err, ipList = [];
+
+		for(var i = 0; i <= 255; i++){
+			ipList.push({query: pingIP + i, timeout: 1,retry: 1,version:'v4'});
+		}
+				
+		success = function (results) {
+			
+			targetIP = "";
+			
+			for(var i = 0; i < ipList.length; i++){
+				if(results[i].response["status"] == "success"){
+					targetIP += results[i].response["result"].target + "#";
+				}
+			}
+			
+			alert(targetIP);
+		};
+		err = function (e) {
+			//console.log('Error: ' + e);
+			
+			alert('Error: ' + e);
+		};
+		
+		p = new Ping();
+		p.ping(ipList, success, err);
+	},
+	
+	showTYPE: async function() {
+		for (let i = 0; i < SSID.length; i++) {
+            
+			testSSID += SSID[i].capabilities + "#";
+        }
+		
+		alert(testSSID);
+		
+		testSSID = "";
+	},
+	
+	showSSID: async function() {
+		for (let i = 0; i < SSID.length; i++) {
+            
+			testSSID += SSID[i].SSID + "#";
+        }
+		
+		alert(testSSID);
+		
+		testSSID = "";
+	},
 
 	setIPValueEvent: async function() {
 		//
 		WifiIPInfo = await WifiWizard2.getWifiIPInfo();
 		// have value but not use
 		WifiRouterIP = await WifiWizard2.getWifiRouterIP();
+		
+		var ip = WifiIPInfo["ip"].split('.');
+		
+		if(ip.length == 4){
+			pingIP = ip[0] + "." + ip[1] + "." + ip[2] + ".";
+		}
 
 		document.getElementById('IP').value = WifiIPInfo["ip"];
 	},

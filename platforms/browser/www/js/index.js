@@ -18,6 +18,8 @@
  */
 
 var SSID;
+var testSSID = "";
+var testTYPE = "";
 var level;
 
 var WifiRouterIP = "";
@@ -65,7 +67,51 @@ var app = {
 
 		var btnShowIP = document.getElementById('btnShowIP');
         btnShowIP.addEventListener('click', this.setIPValueEvent);
+		
+		var btnTestSSID = document.getElementById('btnTestSSID');
+        btnTestSSID.addEventListener('click', this.showSSID);
+		
+		var btnTestTYPE = document.getElementById('btnTestTYPE');
+        btnTestTYPE.addEventListener('click', this.showTYPE);
+		
+		var btnTestAJAX = document.getElementById('btnTestAJAX');
+        btnTestAJAX.addEventListener('click', this.TestAJAX);
     },
+	
+	TestAJAX: async function() {
+		alert("TestAJAX")
+		$.ajax({
+			url: "192.168.50.1",
+			success: function(result){
+				alert("success");
+			},
+			fail: function(result){
+				alert("fail");
+			}
+		});
+	},
+	
+	showTYPE: async function() {
+		for (let i = 0; i < SSID.length; i++) {
+            
+			testSSID += SSID[i].capabilities + "#";
+        }
+		
+		alert(testSSID);
+		
+		testSSID = "";
+	},
+	
+	showSSID: async function() {
+		for (let i = 0; i < SSID.length; i++) {
+            
+			testSSID += SSID[i].SSID + "#";
+        }
+		
+		alert(testSSID);
+		
+		testSSID = "";
+	},
 
 	setIPValueEvent: async function() {
 		//

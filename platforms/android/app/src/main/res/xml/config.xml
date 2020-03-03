@@ -8,6 +8,9 @@
         <param name="android-package" value="wifiwizard2.WifiWizard2" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Ping">
+        <param name="android-package" value="org.tiste.cordova.ping.Ping" />
+    </feature>
     <name>HelloCordova</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

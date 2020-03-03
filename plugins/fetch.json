@@ -22,5 +22,13 @@
     },
     "is_top_level": false,
     "variables": {}
+  },
+  "cordova-plugin-ping": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-ping@^0.5.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
