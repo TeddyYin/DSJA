@@ -18,7 +18,7 @@
  */
 
 var SSID;
-var testSSID = "";
+var testSSID = [];
 var testTYPE = "";
 var level;
 var targetIP = "";
@@ -71,11 +71,11 @@ var app = {
 		var btnShowIP = document.getElementById('btnShowIP');
         btnShowIP.addEventListener('click', this.setIPValueEvent);
 		
-		var btnTestSSID = document.getElementById('btnTestSSID');
-        btnTestSSID.addEventListener('click', this.showSSID);
+		// var btnTestSSID = document.getElementById('btnTestSSID');
+        // btnTestSSID.addEventListener('click', this.showSSID);
 		
-		var btnTestTYPE = document.getElementById('btnTestTYPE');
-        btnTestTYPE.addEventListener('click', this.showTYPE);
+		var btnUpdateTable = document.getElementById('btnUpdateTable');
+        btnUpdateTable.addEventListener('click', this.updateTable);
 		
 		var btnTestAJAX = document.getElementById('btnTestAJAX');
         btnTestAJAX.addEventListener('click', this.TestAJAX);
@@ -120,27 +120,54 @@ var app = {
 		p.ping(ipList, success, err);
 	},
 	
-	showTYPE: async function() {
-		for (let i = 0; i < SSID.length; i++) {
+	// showTYPE: async function() {
+		// var aaa = "";
+		
+		// for (var i = 0; i < testSSID.length; i++) {
             
-			testSSID += SSID[i].capabilities + "#";
-        }
+			// aaa += testSSID[i].TYPE + "#";
+        // }
 		
-		alert(testSSID);
+		// alert(aaa);
+	// },
+	
+	updateTable: async function() {
+		SSID = await WifiWizard2.scan();
 		
-		testSSID = "";
+		var filter = document.getElementById('Filter').value;
+		
+		testSSID = [];
+		
+		for(var i = 0 ; i < SSID.length; i++){
+			
+			var str = SSID[i].SSID;
+			
+			if(str.indexOf(filter) >= 0){
+				testSSID.push({'SSID': str, 'TYPE': SSID[i].capabilities});
+			}
+		}
+		
+		var tableHTML = '<tbody><tr><th>Wifi</th><th>Type</th></tr>';
+		
+		for(var i = 0; i < testSSID.length; i++) {
+			tableHTML += '<tr><td>' + testSSID[i].SSID + '</td><td>' + SSID[i].capabilities +'</td></tr>'
+		}
+		
+		tableHTML += '</tbody>';
+		
+		document.getElementById("wifiTable").innerHTML = tableHTML;
 	},
 	
-	showSSID: async function() {
-		for (let i = 0; i < SSID.length; i++) {
+	// showSSID: async function() {
+		// var aaa = "";
+		
+		// for (var i = 0; i < testSSID.length; i++) {
             
-			testSSID += SSID[i].SSID + "#";
-        }
+			// aaa += testSSID[i].SSID + "#";
+        // }
 		
-		alert(testSSID);
-		
-		testSSID = "";
-	},
+		// alert(aaa);
+	// },
 
 	setIPValueEvent: async function() {
 		//
@@ -159,6 +186,20 @@ var app = {
 
     getAvaliableWifi: async function() {
         SSID = await WifiWizard2.scan();
+		
+		var filter = document.getElementById('Filter').value;
+		
+		testSSID = [];
+		
+		for(var i = 0 ; i < SSID.length; i++){
+			
+			var str = SSID[i].SSID;
+			
+			if(str.indexOf(filter) >= 0){
+				testSSID.push({'SSID': str, 'TYPE': SSID[i].capabilities});
+			}
+		}
+		
         alert(SSID.map(x => x.SSID).join());
     },
 	
