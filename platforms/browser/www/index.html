@@ -33,10 +33,6 @@
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
         <link rel="stylesheet" type="text/css" href="css/index.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/ping.js"></script>
         <title>Hello World</title>
     </head>
     <body>
@@ -99,35 +95,40 @@
 					<input type="text" id="IP" value="IP" readonly>
 				</th>
 			  </tr>
+			  <tr>
+				<th>
+					<label>SSID Filter:</label>
+				</th>
+				<th>
+					<input type="text" id="Filter" value="yin">
+				</th>
+			  </tr>
+			  <tr>
+				<th>
+					<label>ajax ip:</label>
+				</th>
+				<th>
+					<input type="text" id="ajax" value="http://192.168.50.123/aaa.json">
+				</th>
+			  </tr>
 			</table>
 
 			<br/>
 
-			<div style="display: inline-flex;">
+			<div style="display: inline-flex; margin-left: -50px;">
 				<button id="btnScanWifi">Scan Wifi</button>
 				<button id="btnConnectWifi">Connect Wifi</button>
 				<button id="btnShowIP">Show IP</button>
-				<button id="btnTestSSID">SSID</button>
-				<button id="btnTestTYPE">TYPE</button>
-				<button id="btnTestAJAX">AJAX</button>
+				<!-- <button id="btnTestSSID">SSID</button> -->
+				<button id="btnUpdateTable">Update Table</button>
+				<button id="btnTestAJAX">Show List</button>
+				<button id="btnAJAX">Ajax</button>
 			</div>
         </div>
-		
-		<!-- <div id="div1"> -->
-			<!-- <h2>Let jQuery AJAX Change This Text</h2> -->
-		<!-- </div> -->
-		
-		<!-- <input id='pingurl' type='text' value='http://google.com'></input> -->
-		<!-- <button onclick='do_ping()'>Ping</button> -->
-    </body>
-	
-	<!-- <script> -->
-    <!-- var do_ping = function() { -->
-        <!-- ping(document.getElementById('pingurl').value).then(function(delta) { -->
-            <!-- alert(delta); -->
-        <!-- }).catch(function(error) { -->
-            <!-- alert(String(error)); -->
-        <!-- }); -->
-    <!-- }; -->
-    <!-- </script> -->
+    
+	    <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> -->
+	</body>
 </html>

@@ -79,7 +79,40 @@ var app = {
 		
 		var btnTestAJAX = document.getElementById('btnTestAJAX');
         btnTestAJAX.addEventListener('click', this.TestAJAX);
+		
+		var btnAJAX = document.getElementById('btnAJAX');
+        btnAJAX.addEventListener('click', this.AJAX);
     },
+	
+	AJAX: function() {
+		var ajaxValue = document.getElementById('ajax').value;
+		
+		alert(ajaxValue);
+		
+		$.ajax({
+			type: 'get',	//Request method: GET, POST  
+			//url : 'http://opendata.cwb.gov.tw/opendata/DIV4/O-A0011-006.xml', 
+			url: ajaxValue,
+			contentType: false, // 忽略Content-Type
+            processData: false, // 忽略發送的數據
+            dataType: "json",
+			//Where to send the data
+			// dataType: "xml",
+			// data: {name, password},  //What data you want to send
+			success: function(data) {  
+				//Here you will receive data from server
+				//Do what you want to do with data                         
+				//console.log(data)	 //This is a example, like we want to print the result
+				
+				alert(data + " success");
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown) {
+				alert("XMLHttpRequest.status = " + XMLHttpRequest.status);
+				alert("XMLHttpRequest.readyState = " + XMLHttpRequest.readyState);
+				alert("textStatus " + textStatus);
+			},
+		});
+	},
 	
 	TestAJAX: async function() {
 		// alert("TestAJAX");
