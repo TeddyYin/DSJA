@@ -85,26 +85,32 @@ var app = {
     },
 	
 	AJAX: function() {
-		var ajaxValue = document.getElementById('ajax').value;
+		var ip = document.getElementById('ajax').value;
 		
-		alert(ajaxValue);
+		var wifi_ssid = document.getElementById('ssid').value;
+		var wifi_passcode = document.getElementById('password').value;
+
+		alert(ip);
 		
 		$.ajax({
-			type: 'get',	//Request method: GET, POST  
-			//url : 'http://opendata.cwb.gov.tw/opendata/DIV4/O-A0011-006.xml', 
-			url: ajaxValue,
+			type: 'POST',	//Request method: GET, POST
+			// url : 'https://www.google.com/',
+			// url: ip + ":8888/api/enable_wifi",
+			url: "http://" + ip + ":8888/api/enable_wifi",
 			contentType: false, // 忽略Content-Type
             processData: false, // 忽略發送的數據
             dataType: "json",
 			//Where to send the data
 			// dataType: "xml",
-			// data: {name, password},  //What data you want to send
+			data: {"wifi_ssid": wifi_ssid, "wifi_passcode": wifi_passcode},  //What data you want to send
 			success: function(data) {  
 				//Here you will receive data from server
 				//Do what you want to do with data                         
 				//console.log(data)	 //This is a example, like we want to print the result
 				
 				alert(data + " success");
+
+				window.open("http://" + ip + ":3000/foo");
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("XMLHttpRequest.status = " + XMLHttpRequest.status);
