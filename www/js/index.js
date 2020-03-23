@@ -97,9 +97,9 @@ var app = {
 			// url : 'https://www.google.com/',
 			// url: ip + ":8888/api/enable_wifi",
 			url: "http://" + ip + ":8888/api/enable_wifi",
-			contentType: false, // 忽略Content-Type
+			contentType : 'application/json; charset=utf-8', // 要送到server的資料型態
             processData: false, // 忽略發送的數據
-            dataType: "json",
+            dataType : 'json', // 預期從server接收的資料型態
 			//Where to send the data
 			// dataType: "xml",
 			data: {"wifi_ssid": wifi_ssid, "wifi_passcode": wifi_passcode},  //What data you want to send
