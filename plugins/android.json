@@ -15,6 +15,9 @@
     },
     "cordova-plugin-ping": {
       "PACKAGE_NAME": "com.example.cordovaTest"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.example.cordovaTest"
     }
   },
   "dependent_plugins": {

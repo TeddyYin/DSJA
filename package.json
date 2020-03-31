@@ -15,6 +15,7 @@
   "dependencies": {
     "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
+    "cordova-plugin-inappbrowser": "^3.2.0",
     "cordova-plugin-ping": "^0.5.0",
     "cordova-plugin-wifiwizard2": "^3.1.1",
     "es6-promise-plugin": "^4.1.0"
@@ -26,7 +27,8 @@
     "plugins": {
       "cordova-plugin-whitelist": {},
       "wifiwizard2": {},
-      "cordova-plugin-ping": {}
+      "cordova-plugin-ping": {},
+      "cordova-plugin-inappbrowser": {}
     },
     "platforms": [
       "android",
