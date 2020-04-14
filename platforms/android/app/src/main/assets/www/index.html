@@ -32,25 +32,25 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="../../index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
+      <!-- <li class="nav-item d-none d-sm-inline-block"> -->
+        <!-- <a href="../../index3.html" class="nav-link">Home</a> -->
+      <!-- </li> -->
+      <!-- <li class="nav-item d-none d-sm-inline-block"> -->
+        <!-- <a href="#" class="nav-link">Contact</a> -->
+      <!-- </li> -->
     </ul>
 
     <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <!-- <form class="form-inline ml-3"> -->
+      <!-- <div class="input-group input-group-sm"> -->
+        <!-- <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <div class="input-group-append"> -->
+          <!-- <button class="btn btn-navbar" type="submit"> -->
+            <!-- <i class="fas fa-search"></i> -->
+          <!-- </button> -->
+        <!-- </div> -->
+      <!-- </div> -->
+    <!-- </form> -->
   </nav>
   <!-- /.navbar -->
 
@@ -62,7 +62,7 @@
            alt="AdminLTE Logo"
            class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">DSJA</span>
     </a>
 
     <!-- Sidebar -->
@@ -84,7 +84,23 @@
                with font-awesome or any other icon font library -->
 		  
 		  <li class="nav-item">
-            <a href="#" id="btnOpenPage" class="nav-link">
+            <!-- <a href="#" id="btnOpenPage" class="nav-link" onclick="document.getElementById('btnOpenPage').href = document.getElementById('link').value"> -->
+              <!-- <i class="nav-icon fas fa-book"></i> -->
+              <!-- <p>New Page</p> -->
+            <!-- </a> -->
+			<!-- <a id="btnOpenPage" class="nav-link" onclick="document.getElementById('index').style = 'display: none;'; document.getElementById('iframe').style = 'display: block';"> -->
+              <!-- <i class="nav-icon fas fa-book"></i> -->
+              <!-- <p>New Page</p> -->
+            <!-- </a> -->
+			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: none;'; document.getElementById('card2').style = 'display: block';">
+              <i class="nav-icon fas fa-book"></i>
+              <p>iframe</p>
+		    </button>
+			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: block;'; document.getElementById('card2').style = 'display: none';">
+              <i class="nav-icon fas fa-book"></i>
+              <p>connect</p>
+		    </button>
+			<a href="#" id="btnOpenPage" class="nav-link" onclick="document.getElementById('btnOpenPage').href = document.getElementById('link').value">
               <i class="nav-icon fas fa-book"></i>
               <p>New Page</p>
             </a>
@@ -119,7 +135,7 @@
     <section class="content">
 
       <!-- Default box -->
-      <div class="card">
+      <div class="card" id="card1">
             
 			<div id="deviceready" class="blink">
                 <p class="event listening">Connecting to Device</p>
@@ -194,14 +210,34 @@
 					<input type="text" id="ajax" value="">
 				</th>
 			  </tr>
+			  <tr>
+				<th>
+					<label>open link:</label>
+				</th>
+				<th>
+					<input type="text" id="link" value="https://www.google.com/">
+				</th>
+			  </tr>
 			</table>
 
 			<br/>
 
-			<div style="display: inline-flex; margin-left: -50px;">
+			<div style="display: inline-flex;">
 				<button id="btnScanWifi">Scan Wifi</button>
 				<button id="btnConnectWifi">Connect Wifi</button>
 				<button id="btnShowIP">Show IP</button>
+				<!-- <button id="btnTestSSID">SSID</button> -->
+				<!-- <button id="btnUpdateTable">Update Table</button> -->
+				<!-- <button id="btnTestAJAX">Show List</button> -->
+				<!-- <button id="btnAJAX">Ajax</button> -->
+			</div>
+			
+			<br/>
+
+			<div style="display: inline-flex;">
+				<!-- <button id="btnScanWifi">Scan Wifi</button> -->
+				<!-- <button id="btnConnectWifi">Connect Wifi</button> -->
+				<!-- <button id="btnShowIP">Show IP</button> -->
 				<!-- <button id="btnTestSSID">SSID</button> -->
 				<button id="btnUpdateTable">Update Table</button>
 				<button id="btnTestAJAX">Show List</button>
@@ -210,19 +246,25 @@
 
       </div>
       <!-- /.card -->
+	  
+	  <div class="card" id="card2" style="display: none">
+            
+			<iframe id="iframe" width="1280" height="720" src="https://www.youtube.com/embed/TcOWwIQDpnE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+      </div>
 
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.2
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
+  <!-- <footer class="main-footer"> -->
+    <!-- <div class="float-right d-none d-sm-block"> -->
+      <!-- <b>Version</b> 3.0.2 -->
+    <!-- </div> -->
+    <!-- <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights -->
+    <!-- reserved. -->
+  <!-- </footer> -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
