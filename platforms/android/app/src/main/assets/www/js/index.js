@@ -119,7 +119,7 @@ var app = {
 				
 				alert(data + " success");
 
-				window.open("http://" + ajaxIp + ":3000/foo");
+				// window.open("http://" + ajaxIp + ":3000/foo");
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("XMLHttpRequest.status = " + XMLHttpRequest.status);
@@ -127,6 +127,8 @@ var app = {
 				alert("textStatus " + textStatus);
 			},
 		});
+
+		document.getElementById('iframe').src = "http://" + ajaxIp + ":3000/foo"
 	},
 	
 	TestAJAX: async function() {
@@ -265,6 +267,9 @@ var app = {
 		
 		// WifiWizard2.formatWifiConfig(ssid, password, algorithm, isHiddenSSID)
 		// WifiWizard2.formatWifiConfig('yin 5G', 'momo6699', 'WPA', true);
+
+		var btnUpdateTable = document.getElementById('btnUpdateTable');
+		btnUpdateTable.addEventListener('click', this.updateTable);
     }
 };
 

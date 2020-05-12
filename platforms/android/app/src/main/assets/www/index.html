@@ -92,7 +92,7 @@
               <!-- <i class="nav-icon fas fa-book"></i> -->
               <!-- <p>New Page</p> -->
             <!-- </a> -->
-			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: none;'; document.getElementById('card2').style = 'display: block';">
+			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: none;'; document.getElementById('iframe').src = 'http://' + document.getElementById('ajax').value + ':3000/foo';  document.getElementById('card2').style = 'display: block';">
               <i class="nav-icon fas fa-book"></i>
               <p>iframe</p>
 		    </button>
@@ -100,10 +100,10 @@
               <i class="nav-icon fas fa-book"></i>
               <p>connect</p>
 		    </button>
-			<a href="#" id="btnOpenPage" class="nav-link" onclick="document.getElementById('btnOpenPage').href = document.getElementById('link').value">
-              <i class="nav-icon fas fa-book"></i>
-              <p>New Page</p>
-            </a>
+			<!-- <a href="#" id="btnOpenPage" class="nav-link" onclick="document.getElementById('btnOpenPage').href = document.getElementById('link').value"> -->
+              <!-- <i class="nav-icon fas fa-book"></i> -->
+              <!-- <p>New Page</p> -->
+            <!-- </a> -->
           </li>
         </ul>
       </nav>
@@ -210,24 +210,16 @@
 					<input type="text" id="ajax" value="">
 				</th>
 			  </tr>
-			  <tr>
-				<th>
-					<label>open link:</label>
-				</th>
-				<th>
-					<input type="text" id="link" value="https://www.google.com/">
-				</th>
-			  </tr>
 			</table>
 
 			<br/>
 
 			<div style="display: inline-flex;">
-				<button id="btnScanWifi">Scan Wifi</button>
+				<!-- <button id="btnScanWifi">Scan Wifi</button> -->
 				<button id="btnConnectWifi">Connect Wifi</button>
 				<button id="btnShowIP">Show IP</button>
 				<!-- <button id="btnTestSSID">SSID</button> -->
-				<!-- <button id="btnUpdateTable">Update Table</button> -->
+				<button id="btnUpdateTable">Update Table</button>
 				<!-- <button id="btnTestAJAX">Show List</button> -->
 				<!-- <button id="btnAJAX">Ajax</button> -->
 			</div>
@@ -239,7 +231,7 @@
 				<!-- <button id="btnConnectWifi">Connect Wifi</button> -->
 				<!-- <button id="btnShowIP">Show IP</button> -->
 				<!-- <button id="btnTestSSID">SSID</button> -->
-				<button id="btnUpdateTable">Update Table</button>
+				<!-- <button id="btnUpdateTable">Update Table</button> -->
 				<button id="btnTestAJAX">Show List</button>
 				<button id="btnAJAX">Ajax</button>
 			</div>
@@ -249,7 +241,7 @@
 	  
 	  <div class="card" id="card2" style="display: none">
             
-			<iframe id="iframe" width="1280" height="720" src="https://www.youtube.com/embed/TcOWwIQDpnE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			<iframe id="iframe" width="1280" height="720" src="https://www.youtube.com/embed/l5vLm12idWM" frameborder="0"></iframe>
 
       </div>
 
