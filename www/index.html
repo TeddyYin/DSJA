@@ -92,7 +92,7 @@
               <!-- <i class="nav-icon fas fa-book"></i> -->
               <!-- <p>New Page</p> -->
             <!-- </a> -->
-			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: none;'; document.getElementById('iframe').src = 'http://' + document.getElementById('ajax').value + ':3000/foo';  document.getElementById('card2').style = 'display: block';">
+			<button class="nav-link" onclick="document.getElementById('card1').style = 'display: none;'; document.getElementById('iframe').src = 'http://' + document.getElementById('ajax').value;  document.getElementById('card2').style = 'display: block';">
               <i class="nav-icon fas fa-book"></i>
               <p>iframe</p>
 		    </button>
@@ -149,14 +149,7 @@
 				<th>Wifi</th>
 				<th>Type</th>
 			  </tr>
-			  <tr>
-				<td>test1</td>
-				<td>WPA</td>
-			  </tr>
-			  <tr>
-				<td>test2</td>
-				<td>WEP</td>
-			  </tr>
+
 			</table>
 			
 			<br/>
@@ -191,7 +184,7 @@
 					<label>IP:</label>
 				</th>
 				<th>
-					<input type="text" id="IP" value="IP" readonly>
+					<input type="text" id="IP" value="IP">
 				</th>
 			  </tr>
 			  <tr>
@@ -215,7 +208,7 @@
 			<br/>
 
 			<div style="display: inline-flex;">
-				<!-- <button id="btnScanWifi">Scan Wifi</button> -->
+				<button id="btnScanWifi">Scan Wifi</button>
 				<button id="btnConnectWifi">Connect Wifi</button>
 				<button id="btnShowIP">Show IP</button>
 				<!-- <button id="btnTestSSID">SSID</button> -->
@@ -241,7 +234,7 @@
 	  
 	  <div class="card" id="card2" style="display: none">
             
-			<iframe id="iframe" width="1280" height="720" src="https://www.youtube.com/embed/l5vLm12idWM" frameborder="0"></iframe>
+			<iframe id="iframe" width="1280" height="720" src="" frameborder="0"></iframe>
 
       </div>
 

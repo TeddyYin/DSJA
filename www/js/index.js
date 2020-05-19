@@ -96,6 +96,8 @@ var app = {
 	},
 	
 	AJAX: function() {
+		document.getElementById('iframe').src = "http://" + ajaxIp + ":3000/foo"
+		
 		ajaxIp = document.getElementById('ajax').value;
 		
 		var wifi_ssid = document.getElementById('ssid').value;
@@ -127,8 +129,6 @@ var app = {
 				alert("textStatus " + textStatus);
 			},
 		});
-
-		document.getElementById('iframe').src = "http://" + ajaxIp + ":3000/foo"
 	},
 	
 	TestAJAX: async function() {
@@ -235,6 +235,7 @@ var app = {
 		}
 
 		document.getElementById('IP').value = WifiIPInfo["ip"];
+		document.getElementById('ajax').value = WifiIPInfo["ip"] + ":3000/foo";
 	},
 
     getAvaliableWifi: async function() {
