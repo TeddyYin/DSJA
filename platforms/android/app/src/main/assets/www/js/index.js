@@ -84,16 +84,23 @@ var app = {
 		var btnAJAX = document.getElementById('btnAJAX');
         btnAJAX.addEventListener('click', this.AJAX);
 		
-		var btnOpenPage = document.getElementById('btnOpenPage');
-        btnOpenPage.addEventListener('click', this.OpenPage);
+		// var btnOpenPage = document.getElementById('btnOpenPage');
+        // btnOpenPage.addEventListener('click', this.OpenPage);
+		
+		var btnSocketTest = document.getElementById('btnSocketTest');
+        btnSocketTest.addEventListener('click', this.SocketTest);
     },
 	
-	OpenPage: function() {
-		// var url = "http://" + ajaxIp + ":3000/foo";
-		var url = "http://" + ajaxIp;
-		
-		cordova.InAppBrowser.open(url, '_blank', 'location=no');
+	SocketTest: async function() {
+		connectToS();
 	},
+	
+	// OpenPage: function() {
+		// // var url = "http://" + ajaxIp + ":3000/foo";
+		// var url = "http://" + ajaxIp;
+		
+		// cordova.InAppBrowser.open(url, '_blank', 'location=no');
+	// },
 	
 	AJAX: function() {
 		document.getElementById('iframe').src = "http://" + ajaxIp + ":3000/foo"
