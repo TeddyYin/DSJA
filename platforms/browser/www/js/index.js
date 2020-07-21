@@ -27,6 +27,7 @@ var WifiRouterIP = "";
 var WifiIPInfo= "";
 
 var pingIP = "";
+var ajaxIp = "";
 
 var app = {
     // Application Constructor
@@ -82,21 +83,55 @@ var app = {
 		
 		var btnAJAX = document.getElementById('btnAJAX');
         btnAJAX.addEventListener('click', this.AJAX);
+		
+		// var btnOpenPage = document.getElementById('btnOpenPage');
+        // btnOpenPage.addEventListener('click', this.OpenPage);
+		
+		var btnSocketTest = document.getElementById('btnSocketTest');
+        btnSocketTest.addEventListener('click', this.SocketTest);
     },
 	
+	SocketTest: async function() {
+		
+		var ssid = document.getElementById('ssid').value;
+		var pwd = document.getElementById('password').value;
+		var algorithm = document.getElementById('algorithm').value;
+		
+		ajaxIp = document.getElementById('ajax').value;
+		
+		// alert('Send information to Pi');
+		const socket = io('http://' + ajaxIp + ':3000/');
+		//const socket = io('http://' + ajaxIp + ':9999/');
+		// socket.emit('test', 'hello');
+		socket.emit('connectionTry', { SSID: ssid, PWD: pwd, ALGORITHM: algorithm } );
+		socket.on('connectionSuccess', args => {
+			alert(args);
+		});
+		socket.on('connectionFail', args => {
+			alert(args);
+		});
+	},
+	
+	// OpenPage: function() {
+		// // var url = "http://" + ajaxIp + ":3000/foo";
+		// var url = "http://" + ajaxIp;
+		
+		// cordova.InAppBrowser.open(url, '_blank', 'location=no');
+	// },
+	
 	AJAX: function() {
-		var ip = document.getElementById('ajax').value;
+		document.getElementById('iframe').src = "http://" + ajaxIp + ":3000/foo"
+		
+		ajaxIp = document.getElementById('ajax').value;
 		
 		var wifi_ssid = document.getElementById('ssid').value;
 		var wifi_passcode = document.getElementById('password').value;
-
-		alert(ip);
 		
 		$.ajax({
 			type: 'POST',	//Request method: GET, POST
 			// url : 'https://www.google.com/',
 			// url: ip + ":8888/api/enable_wifi",
-			url: "http://" + ip + ":8888/api/enable_wifi",
+			url: "http://" + ajaxIp + ":8888/api/enable_wifi",
 			contentType : 'application/json; charset=utf-8', // 要送到server的資料型態
             processData: false, // 忽略發送的數據
             dataType : 'json', // 預期從server接收的資料型態
@@ -110,7 +145,7 @@ var app = {
 				
 				alert(data + " success");
 
-				window.open("http://" + ip + ":3000/foo");
+				// window.open("http://" + ajaxIp + ":3000/foo");
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				alert("XMLHttpRequest.status = " + XMLHttpRequest.status);
@@ -121,6 +156,9 @@ var app = {
 	},
 	
 	TestAJAX: async function() {
+		
+		// var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=no');
+		
 		// alert("TestAJAX");
 		// $.ajax({
 			// url: "192.168.50.1",
@@ -221,6 +259,7 @@ var app = {
 		}
 
 		document.getElementById('IP').value = WifiIPInfo["ip"];
+		document.getElementById('ajax').value = WifiIPInfo["ip"] + ":3000/foo";
 	},
 
     getAvaliableWifi: async function() {
@@ -253,6 +292,9 @@ var app = {
 		
 		// WifiWizard2.formatWifiConfig(ssid, password, algorithm, isHiddenSSID)
 		// WifiWizard2.formatWifiConfig('yin 5G', 'momo6699', 'WPA', true);
+
+		var btnUpdateTable = document.getElementById('btnUpdateTable');
+		btnUpdateTable.addEventListener('click', this.updateTable);
     }
 };
 

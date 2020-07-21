@@ -92,7 +92,24 @@ var app = {
     },
 	
 	SocketTest: async function() {
-		connectToS();
+		
+		var ssid = document.getElementById('ssid').value;
+		var pwd = document.getElementById('password').value;
+		var algorithm = document.getElementById('algorithm').value;
+		
+		ajaxIp = document.getElementById('ajax').value;
+		
+		// alert('Send information to Pi');
+		const socket = io('http://' + ajaxIp + ':3000/');
+		//const socket = io('http://' + ajaxIp + ':9999/');
+		// socket.emit('test', 'hello');
+		socket.emit('connectionTry', { SSID: ssid, PWD: pwd, ALGORITHM: algorithm } );
+		socket.on('connectionSuccess', args => {
+			alert(args);
+		});
+		socket.on('connectionFail', args => {
+			alert(args);
+		});
 	},
 	
 	// OpenPage: function() {
